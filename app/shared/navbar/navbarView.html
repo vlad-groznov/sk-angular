@@ -1,0 +1,25 @@
+<nav class="navbar navbar-default">
+    <div class="container">
+
+        <div class="navbar-header">
+            <span class="navbar-brand">Skeleton</span>
+        </div>
+
+        <div id="navbar">
+            <ul class="nav navbar-nav">
+                <li ng-class="{active:menuCurrent=='/'}"><a href="#/">About</a></li>
+                <li ng-class="{active:menuCurrent=='/monitor'}"><a href="#/monitor">Monitor</a></li>
+                <li ng-class="{active:menuCurrent=='/items'}"><a href="#/items">Items</a></li>
+            </ul>
+
+            <!--requestCounter-->
+            <div class="navbar-text navbar-right" style="opacity: 0.5;">
+                <span class="label label-danger" ng-show="requestCounter.error">{{requestCounter.error}}</span>
+                <span class="label label-success" ng-show="requestCounter.send">{{requestCounter.send}}</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>

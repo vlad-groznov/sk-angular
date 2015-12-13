@@ -1,0 +1,24 @@
+<h2>Monitor</h2>
+
+<div class="panel panel-default">
+    <table class="table table table-striped table-hover">
+        <thead>
+        <tr>
+            <th width='50%'>Title</th>
+            <th>xxx</th>
+            <th>yyy</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in monitor">
+            <td>{{item.title}}</td>
+            <td>{{item.xxx}}</td>
+            <td>{{item.yyy}}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <div ng-show=" ! monitor" class="preloader-content"/></div>
+
+</div>

@@ -1,0 +1,85 @@
+<h2>
+    <div class='btn-toolbar pull-right'>
+        <div class='btn-group'>
+            <a class='btn btn-success btn-sm' ng-click="showModal('create' , {})"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create item</a>
+        </div>
+    </div>
+    Items
+</h2>
+
+
+<div class="panel panel-default">
+    <table class="table table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th width='15%'>Value</th>
+            <th width='15%'>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in list | orderBy:'value'">
+            <td>
+                <b>{{item.title}}</b><br/>
+            </td>
+            <td>{{item.value}}</td>
+            <td>
+                <a ng-click="showModal('show', item)" class='btn btn-default btn-xs' ><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                <a ng-click="showModal('update',item)" class='btn btn-success btn-xs' ><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                <a ng-click="showModal('delete',item)" class='btn btn-danger btn-xs' ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div ng-show=" ! list " class="preloader-content"/>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="unique_modal" tabindex="-1" role="dialog">
+
+    <div class="modal-dialog" role="document">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="cancelModal()">&times;</button>
+                <h4 ng-show="action == 'delete'" class="modal-title">Delete</h4>
+                <h4 ng-show="action == 'show'" class="modal-title">Show</h4>
+                <h4 ng-show="action == 'create'" class="modal-title">Create</h4>
+                <h4 ng-show="action == 'update'" class="modal-title">Update</h4>
+            </div>
+
+            <!-- DELETE ITEM --------------------------------->
+            <div class="modal-body" ng-show="action == 'delete'">
+                <p>
+                    <b>Title:</b> {{item.title}}<br/>
+                    <b>Description:</b> {{item.value}}<br/>
+                </p>
+            </div>
+
+            <!-- SHOW ITEM --------------------------------->
+            <div class="modal-body" ng-show="action == 'show'">
+                <pre>{{item | json}}</pre>
+            </div>
+
+            <!-- Create / Update ITEM --------------------------------->
+            <div class="modal-body" ng-show="action == 'create'  || action == 'update'">
+                <form>
+                    <div class="form-group">
+                        <textarea style="height: 300px;" class="form-control" json-text ng-model="item.value"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" ng-show="action == 'delete'" class="btn btn-danger" ng-click="submit()">Delete</button>
+                <button type="button" ng-show="action == 'create'" class="btn btn-primary" ng-click="submit()">Create</button>
+                <button type="button" ng-show="action == 'update'" class="btn btn-primary" ng-click="submit()">Update</button>
+                <button type="button" class="btn btn-default" ng-click="cancelModal()">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

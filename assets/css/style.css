@@ -1,0 +1,8 @@
+.preloader-content {
+    opacity: 0.3;
+    margin: 20px;
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('../img/preloader-domino.gif');
+}
