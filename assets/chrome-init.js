@@ -15,7 +15,7 @@ if ('serviceWorker' in navigator) {
     });
 
     console.log('Service Worker is supported');
-    navigator.serviceWorker.register('serviceWorkerNotification.js').then(function () {
+    navigator.serviceWorker.register('/sk-angular/assets/serviceWorkerNotification.js').then(function () {
         return navigator.serviceWorker.ready;
     }).then(function (serviceWorkerRegistration) {
         reg = serviceWorkerRegistration;
